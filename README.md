@@ -1,4 +1,4 @@
-# **Hola, Im César Nóvoa**  <img src='img/hi.gif' width='20'>
+# **Hola, I'm César Nóvoa**  <img src='img/hi.gif' width='20'>
 
 _Web Developer at [ingenyus](https://ingenyus.es) <img src='img/current-job.png' width='10'>_
 
