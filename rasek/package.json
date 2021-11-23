@@ -1,6 +1,6 @@
 {
   "name": "rasek",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "A personal card for César Nóvoa",
   "main": "card.js",
   "bin": {
