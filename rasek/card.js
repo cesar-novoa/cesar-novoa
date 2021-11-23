@@ -20,10 +20,10 @@ const questions = [
       {
         name: `Send an ${chalk.green.bold("email")}`,
         value: () => {
-          open("mailto:themotokar@gmail.com");
+          open("mailto:novoafernandezcesar@gmail.com");
           console.log(
             "\nDone, see you soon at inbox.\n" +
-              "\nJust in case: themotokar@gmail.com \n"
+              "\nJust in case: novoafernandezcesar@gmail.com \n"
           );
         },
       },
