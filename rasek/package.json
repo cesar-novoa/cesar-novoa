@@ -1,6 +1,6 @@
 {
   "name": "rasek",
-  "version": "4.0.0",
+  "version": "1.1.0",
   "description": "A personal card for César Nóvoa",
   "main": "card.js",
   "bin": {
@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "node card.js",
-    "pub": "npm version major & npm publish"
+    "pub": "npm version minor & npm publish"
   },
   "dependencies": {
     "boxen": "^4.2.0",
