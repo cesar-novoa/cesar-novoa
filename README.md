@@ -1,6 +1,6 @@
 # **Hola, I'm César Nóvoa**  <img src='img/hi.gif' width='20'>
 
-_Sofware Developer Engineer at [CloudSphere](https://cloudsphere.com/) <img src='img/current-job.png' width='10'>_
+_Sofware Developer Engineer at [CloudSphere](https://cloudsphere.com/) <img src='img/current-job.svg' width='10'>_
 
 ---
 
