@@ -1,11 +1,10 @@
 # **Hola, I'm César Nóvoa**  <img src='img/hi.gif' width='20'>
 
-_Web Developer at [ingenyus](https://ingenyus.es) <img src='img/current-job.png' width='10'>_
+_Sofware Developer Engineer at [CloudSphere](https://cloudsphere.com/) <img src='img/current-job.png' width='10'>_
 
 ---
 
-[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/rasekdk/)
-[![Linkedin](https://img.shields.io/badge/-Twitter-blue?style=flat-square&logo=twitter&logoColor=white)](https://www.twitter.com/rasekdk/)
+[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/cesar-novoa/)
 
 
 ---
