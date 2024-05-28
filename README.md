@@ -9,15 +9,6 @@ _Sofware Developer Engineer at [CloudSphere](https://cloudsphere.com/) <img src=
 
 ---
 
-👇 Contact with me through the console
-
-```
-npx rasek
-```
-
-_Created by **[anmol098](https://github.com/anmol098)**_
-
----
 
 ## My Projects
 
