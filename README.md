@@ -12,7 +12,9 @@ _Sofware Developer Engineer at [CloudSphere](https://cloudsphere.com/) <img src=
 
 ## My Projects
 
-[Community](https://github.com/rasekdk/Community) -> Full Stack BootCamp Final Project
+[ARTCLO]([https://github.com/rasekdk/Community](https://github.com/rasekdk/ARTCLO)) -> WIP - Learning how to use Astro by creating an e-commerce
+
+[Community](https://github.com/rasekdk/Community) -> Full Stack BootCamp Final Project 
 
 [My Web](https://rasekdk.github.io) -> Portfolio Web
 
