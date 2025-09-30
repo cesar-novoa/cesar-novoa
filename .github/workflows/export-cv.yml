@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Publish Markdown As PDF
         uses: shrink/actions-document-publish@v1
