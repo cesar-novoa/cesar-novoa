@@ -13,12 +13,12 @@ Experienced in guiding teams toward consistent standards and cross-functional co
 
 ## Skills
 
-- **Frontend Development**: React, Redux, JavaScript (ES6+), Vite, HTML5, CSS3, TailwindCSS, Performance optimization
-- **UI/UX & Design Systems**: Design System architecture & governance, Component-driven development, Accessibility (WCAG), Responsive & Mobile-first design, Figma
-- **Testing & Quality**: Unit & Integration testing (Vitest, Jest), Code reviews, CI/CD pipelines (GitLab, GitHub Actions)
-- **Backend & Databases (Foundations)**: Node.js, Express, REST APIs, SQL (MySQL, PostgreSQL), WordPress (PHP)
-- **Collaboration & Workflow**: Agile/Scrum, Git, GitHub, GitLab, Cross-functional collaboration with Product, Design, QA & DevOps
-- **Personal Projects**: TypeScript, Next.js, Astro, Python
+- **Frontend Development**: React, Redux, JavaScript (ES6+), Vite, HTML5, CSS3, TailwindCSS, Performance optimization.
+- **UI/UX & Design Systems**: Design System architecture & governance, Component-driven development, Accessibility (WCAG), Responsive & Mobile-first design, Figma.
+- **Testing & Quality**: Unit & Integration testing (Vitest, Jest), Code reviews, CI/CD pipelines (GitLab, GitHub Actions).
+- **Backend & Databases (Foundations)**: Node.js, Express, REST APIs, SQL (MySQL, PostgreSQL), WordPress (PHP).
+- **Collaboration & Workflow**: Agile/Scrum, Git, GitHub, GitLab, Cross-functional collaboration with Product, Design, QA & DevOps.
+- **Personal Projects**: TypeScript, Next.js, Astro, Python.
 
 ## Experience
 
