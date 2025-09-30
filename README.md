@@ -8,7 +8,7 @@ _Frontend Engineer | React & Design Systems_
 
 --- -->
 
-## Resume / CV
+## Resume
 
 - [View CV (Markdown)](./docs/cv.md)
 - [Download CV (PDF)](./docs/cv.pdf)
@@ -41,7 +41,7 @@ let rasek = {
 
 ---
 
-### 📫 Contact
+### Contact
 
 - [LinkedIn](https://linkedin.com/in/cesar-novoa)
 - [Email](mailto:novoafernandezcesar@gmail.com)
