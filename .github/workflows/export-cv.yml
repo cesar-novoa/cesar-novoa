@@ -2,8 +2,7 @@ name: Export CV (HTML + PDF)
 
 on:
   push:
-    paths:
-      - "docs/cv.md"
+    paths: ["docs/cv.md"]
   workflow_dispatch:
 
 permissions:
@@ -12,7 +11,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -22,12 +20,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Generate HTML + PDF
+      - name: Prepare HTML wrappers & CSS (to /tmp)
         shell: bash
         run: |
-          set -euo pipefail
-
-          # 1) Crear los fragmentos en /tmp (rutas absolutas)
           cat > /tmp/header.html <<'EOF'
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
             <style>
@@ -47,11 +42,12 @@ jobs:
               pre, blockquote, table, ul, ol { page-break-inside: avoid; }
             </style>
             EOF
-
           printf '<article class="markdown-body">' > /tmp/before.html
           printf '</article>' > /tmp/after.html
 
-          # 2) Generar HTML standalone (misma ruta de recursos)
+      - name: Generate HTML (standalone)
+        shell: bash
+        run: |
           pandoc docs/cv.md -o docs/cv.html \
             --from gfm \
             --standalone \
@@ -61,7 +57,9 @@ jobs:
             --include-before-body=/tmp/before.html \
             --include-after-body=/tmp/after.html
 
-          # 3) Generar PDF a partir del HTML
+      - name: Generate PDF from HTML
+        shell: bash
+        run: |
           wkhtmltopdf \
             --page-size A4 \
             --margin-top 10mm \
