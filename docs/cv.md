@@ -4,11 +4,11 @@ Email: novoafernandezcesar@gmail.com | Phone: +353 083 027 9077 | Dublin, Irelan
 
 linkedin.com/in/cesar-novoa | github.com/rasekdk
 
-## Sumary
+## Summary
 
-Senior Frontend Engineer with 4+ years of experience building and scaling SaaS platforms in agile teams.
-Proven track record in React and JavaScript, driving performance optimization, testing practices, and scalable architecture.
-Specialized in crafting accessible, high-performance interfaces and bridging design with engineering through modern design systems.
+Senior Frontend Engineer with 4+ years of experience building and scaling SaaS platforms in agile teams.  
+Proven track record in React and JavaScript, driving performance optimization, testing practices, and scalable architecture.  
+Specialized in crafting accessible, high-performance interfaces and bridging design with engineering through modern design systems.  
 Experienced in guiding teams toward consistent standards and cross-functional collaboration, delivering reliable frontends at scale.
 
 ## Skills
@@ -17,7 +17,7 @@ Experienced in guiding teams toward consistent standards and cross-functional co
 - **UI/UX & Design Systems**: Design System architecture & governance, Component-driven development, Accessibility (WCAG), Responsive & Mobile-first design, Figma
 - **Testing & Quality**: Unit & Integration testing (Vitest, Jest), Code reviews, CI/CD pipelines (GitLab, GitHub Actions)
 - **Backend & Databases (Foundations)**: Node.js, Express, REST APIs, SQL (MySQL, PostgreSQL), WordPress (PHP)
-- **Collaboration & Workflow**: Agile/Scrum, Git/GitHub/GitLab, Cross-functional collaboration with Product, Design, QA & DevOps
+- **Collaboration & Workflow**: Agile/Scrum, Git, GitHub, GitLab, Cross-functional collaboration with Product, Design, QA & DevOps
 - **Personal Projects**: TypeScript, Next.js, Astro, Python
 
 ## Experience
@@ -32,7 +32,7 @@ Aug 2022 - Sep 2025
 - Enabled peer growth by mentoring through code reviews and organizing knowledge-sharing sessions.
 - Collaborated cross-functionally with backend, QA, DevOps, and product teams to deliver features reliably at scale.
 
-_Tech: React, Javascript, Redux, Vite, GitLab CI/CD_
+_Tech: React, JavaScript, Redux, Vite, GitLab CI/CD_
 
 ### Frontend-leaning Full-Stack Developer - ingenyus\*
 
@@ -79,5 +79,5 @@ Specialized in digital and web-oriented design, building strong foundations in v
 ## Languages
 
 - Spanish: Native
-- English: Fluent / Professional proficiency
+- English: Fluent (Professional proficiency)
 - Japanese: Studying (JLPT N4 target)
