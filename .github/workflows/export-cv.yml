@@ -24,9 +24,8 @@ jobs:
 
       - name: Generate PDF
         run: |
-          md-to-pdf docs/cv.md \
-            --stylesheet node_modules/github-markdown-css/github-markdown.css \
-            --dest docs/cv.pdf
+          md-to-pdf docs/cv.md docs/cv.pdf \
+            --stylesheet node_modules/github-markdown-css/github-markdown.css
 
       - name: Commit PDF back
         run: |
