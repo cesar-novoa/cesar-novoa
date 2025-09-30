@@ -25,13 +25,12 @@ jobs:
       - name: Generate PDF
         shell: bash
         run: |
-          # 1) Crear los fragmentos HTML/CSS
           cat > header.html <<'EOF'
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
           <style>
             @page { size: A4; margin: 10mm; }
             html, body { margin: 0; padding: 0; }
-            .markdown-body { box-sizing: border-box; max-width: none; margin: 0; padding: 0; }
+            .markdown-body { box-sizing: border-box; max-width: 180mm; margin: 0; padding: 0; }
               body, .markdown-body { 
               font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
               font-size: 12px; line-height: 1.5;
@@ -67,8 +66,7 @@ jobs:
                 --pdf-engine-opt=--margin-right --pdf-engine-opt=10mm \
                 --pdf-engine-opt=--margin-bottom --pdf-engine-opt=10mm \
                 --pdf-engine-opt=--margin-left --pdf-engine-opt=10mm \
-                --pdf-engine-opt=--header-spacing --pdf-engine-opt=0 \
-                --pdf-engine-opt=--footer-spacing --pdf-engine-opt=0
+                --pdf-engine-opt=--print-media-type
 
       - name: Commit PDF back
         run: |
