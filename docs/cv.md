@@ -1,6 +1,6 @@
 # César Nóvoa Fernández
 
-Email: novoafernandezcesar@gmail.com | Phone: +353 083 027 9077 | Dublin, Ireland
+novoafernandezcesar@gmail.com | +353 083 027 9077 | Dublin, Ireland
 
 linkedin.com/in/cesar-novoa | github.com/rasekdk
 
