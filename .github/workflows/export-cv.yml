@@ -1,79 +1,28 @@
-name: Export CV (HTML + PDF)
+name: Generate CV PDF
 
 on:
   push:
-    paths: ["docs/cv.md"]
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    paths:
+      - docs/cv.md
+      - .github/workflows/generate-cv-pdf.yml
+    workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Checkout the repo
+        uses: actions/checkout@v3
 
-      - name: Install Pandoc + wkhtmltopdf
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc wkhtmltopdf
+      - name: Publish Markdown As PDF
+        uses: shrink/actions-document-publish@v1
+        id: publish-doc
+        with:
+          sources: "docs/cv.md"
 
-      - name: Prepare HTML wrappers & CSS (to /tmp)
-        shell: bash
-        run: |
-          cat > /tmp/header.html <<'EOF'
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
-            <style>
-              @page { size: A4; margin: 10mm; }
-              html, body { margin: 0; padding: 0; background: #fff; }
-              .markdown-body { box-sizing: border-box; max-width: 180mm; margin: 0 auto; padding: 0; }
-              body, .markdown-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 13.5px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-              .markdown-body h1 { font-size: 24px; margin: 0 0 10px; }
-              .markdown-body h2 { font-size: 19px; margin: 18px 0 8px; }
-              .markdown-body h3 { font-size: 16px; margin: 14px 0 6px; }
-              .markdown-body p, .markdown-body li { font-size: 13.5px; }
-              .markdown-body table { width: 100%; font-size: 12px; }
-              .markdown-body pre, .markdown-body code { font-size: 12px; }
-              .markdown-body img { max-width: 100%; }
-              .markdown-body a { color: inherit; text-decoration: none; }
-              h1, h2, h3 { page-break-after: avoid; }
-              pre, blockquote, table, ul, ol { page-break-inside: avoid; }
-            </style>
-            EOF
-          printf '<article class="markdown-body">' > /tmp/before.html
-          printf '</article>' > /tmp/after.html
-
-      - name: Generate HTML (standalone)
-        shell: bash
-        run: |
-          pandoc docs/cv.md -o docs/cv.html \
-            --from gfm \
-            --standalone \
-            --metadata title="CV César Nóvoa" \
-            --resource-path=".:docs" \
-            --include-in-header=/tmp/header.html \
-            --include-before-body=/tmp/before.html \
-            --include-after-body=/tmp/after.html
-
-      - name: Generate PDF from HTML
-        shell: bash
-        run: |
-          wkhtmltopdf \
-            --page-size A4 \
-            --margin-top 10mm \
-            --margin-right 10mm \
-            --margin-bottom 10mm \
-            --margin-left 10mm \
-            --zoom 1.12 \
-            docs/cv.html docs/cv.pdf
-
-      - name: Commit HTML & PDF back
-        shell: bash
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/cv.html docs/cv.pdf
-          git commit -m "chore: update CV (HTML+PDF) [skip ci]" || echo "No changes to commit"
-          git push
+      - name: Upload generated PDF as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: cv-pdf
+          path: ${{ steps.publish-doc.outputs.pdf }}
