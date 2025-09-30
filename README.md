@@ -8,16 +8,15 @@ _Frontend Engineer | React & Design Systems_
 
 --- -->
 
-## 📄 Resume / CV
+## Resume / CV
 
 - [View CV (Markdown)](./docs/cv.md)
 - [Download CV (PDF)](./docs/cv.pdf)
 
 ## Projects
 
-[ARTCLO](https://github.com/cesar-novoa/ARTCLO) -> WIP – experimenting with Astro to create an e-commerce concept
-
-[Community](https://github.com/cesar-novoa/Community) -> Full Stack BootCamp Final Project
+- [ARTCLO](https://github.com/cesar-novoa/ARTCLO) -> WIP – experimenting with Astro to create an e-commerce concept
+- [Community](https://github.com/cesar-novoa/Community) -> Full Stack BootCamp Final Project
 
 <!-- [My Web](https://cesar-novoa.github.io) -> Portfolio Web -->
 
