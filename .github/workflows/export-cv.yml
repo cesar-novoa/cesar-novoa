@@ -22,7 +22,7 @@ jobs:
           sources: "docs/cv.md"
 
       - name: Upload generated PDF as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cv-pdf
           path: ${{ steps.publish-doc.outputs.pdf }}
