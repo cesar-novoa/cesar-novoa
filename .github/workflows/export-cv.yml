@@ -22,23 +22,19 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Prepare HTML wrappers & CSS
+      - name: Generate HTML + PDF
         shell: bash
         run: |
-          cat > header.html <<'EOF'
+          set -euo pipefail
+
+          # 1) Crear los fragmentos en /tmp (rutas absolutas)
+          cat > /tmp/header.html <<'EOF'
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
             <style>
               @page { size: A4; margin: 10mm; }
               html, body { margin: 0; padding: 0; background: #fff; }
-              /* Usa ancho casi completo y centrado (ajusta a tu gusto) */
               .markdown-body { box-sizing: border-box; max-width: 180mm; margin: 0 auto; padding: 0; }
-              /* Tipografía base razonable para CV */
-              body, .markdown-body {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-                font-size: 13.5px; line-height: 1.5;
-                -webkit-print-color-adjust: exact; print-color-adjust: exact;
-              }
-              /* Titulares más comedidos que GitHub */
+              body, .markdown-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 13.5px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
               .markdown-body h1 { font-size: 24px; margin: 0 0 10px; }
               .markdown-body h2 { font-size: 19px; margin: 18px 0 8px; }
               .markdown-body h3 { font-size: 16px; margin: 14px 0 6px; }
@@ -47,29 +43,25 @@ jobs:
               .markdown-body pre, .markdown-body code { font-size: 12px; }
               .markdown-body img { max-width: 100%; }
               .markdown-body a { color: inherit; text-decoration: none; }
-              /* Evitar saltos feos en impresión */
               h1, h2, h3 { page-break-after: avoid; }
               pre, blockquote, table, ul, ol { page-break-inside: avoid; }
             </style>
             EOF
 
-          echo '<article class="markdown-body">' > before.html
-          echo '</article>' > after.html
+          printf '<article class="markdown-body">' > /tmp/before.html
+          printf '</article>' > /tmp/after.html
 
-      - name: Generate HTML (standalone)
-        shell: bash
-        run: |
+          # 2) Generar HTML standalone (misma ruta de recursos)
           pandoc docs/cv.md -o docs/cv.html \
             --from gfm \
             --standalone \
             --metadata title="CV César Nóvoa" \
-            --include-in-header=header.html \
-            --include-before-body=before.html \
-            --include-after-body=after.html
+            --resource-path=".:docs" \
+            --include-in-header=/tmp/header.html \
+            --include-before-body=/tmp/before.html \
+            --include-after-body=/tmp/after.html
 
-      - name: Generate PDF from HTML
-        shell: bash
-        run: |
+          # 3) Generar PDF a partir del HTML
           wkhtmltopdf \
             --page-size A4 \
             --margin-top 10mm \
