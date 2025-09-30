@@ -4,17 +4,17 @@ _Frontend Engineer | React & Design Systems_
 
 <!--
 [![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/cesar-novoa/)
-[![Portfolio](https://img.shields.io/badge/-Portfolio-black?style=flat-square&logo=vercel&logoColor=white)](https://rasekdk.github.io)
+[![Portfolio](https://img.shields.io/badge/-Portfolio-black?style=flat-square&logo=vercel&logoColor=white)](https://cesar-novoa.github.io)
 
 --- -->
 
 ## Projects
 
-[ARTCLO](https://github.com/rasekdk/ARTCLO) -> WIP – experimenting with Astro to create an e-commerce concept
+[ARTCLO](https://github.com/cesar-novoa/ARTCLO) -> WIP – experimenting with Astro to create an e-commerce concept
 
-[Community](https://github.com/rasekdk/Community) -> Full Stack BootCamp Final Project
+[Community](https://github.com/cesar-novoa/Community) -> Full Stack BootCamp Final Project
 
-<!-- [My Web](https://rasekdk.github.io) -> Portfolio Web -->
+<!-- [My Web](https://cesar-novoa.github.io) -> Portfolio Web -->
 
 ## Something about me
 
@@ -44,4 +44,4 @@ let rasek = {
 
 ---
 
-⌨️ with ❤️ by [César Nóvoa](https://github.com/rasekdk) 😊
+⌨️ with ❤️ by [César Nóvoa](https://github.com/cesar-novoa) 😊

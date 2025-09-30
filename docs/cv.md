@@ -2,7 +2,7 @@
 
 novoafernandezcesar@gmail.com | +353 083 027 9077 | Dublin, Ireland
 
-linkedin.com/in/cesar-novoa | github.com/rasekdk
+linkedin.com/in/cesar-novoa | github.com/cesar-novoa
 
 ## Summary
 
