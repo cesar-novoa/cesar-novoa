@@ -1,4 +1,4 @@
-name: Export CV
+name: Export CV (HTML + PDF)
 
 on:
   push:
@@ -15,66 +15,75 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Pandoc + wkhtmltopdf
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Generate PDF
+      - name: Prepare HTML wrappers & CSS
         shell: bash
         run: |
           cat > header.html <<'EOF'
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
-          <style>
-            @page { size: A4; margin: 10mm; }
-            html, body { margin: 0; padding: 0; background: #fff; }
-            /* Ancho casi completo y centrado */
-            .markdown-body { box-sizing: border-box; max-width: 180mm; margin: 0 auto; padding: 0; }
-            /* Tipografía más grande para CV */
-            body, .markdown-body {
-              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-              font-size: 13.5px; line-height: 1.5;
-              -webkit-print-color-adjust: exact; print-color-adjust: exact;
-            }
-            /* Titulares calibrados */
-            .markdown-body h1 { font-size: 24px; margin: 0 0 10px; }
-            .markdown-body h2 { font-size: 19px; margin: 18px 0 8px; }
-            .markdown-body h3 { font-size: 16px; margin: 14px 0 6px; }
-            .markdown-body p, .markdown-body li { font-size: 13.5px; }
-            .markdown-body table { width: 100%; font-size: 12px; }
-            .markdown-body pre, .markdown-body code { font-size: 12px; }
-            .markdown-body img { max-width: 100%; }
-            .markdown-body a { color: inherit; text-decoration: none; }
-            /* Evitar saltos feos */
-            h1, h2, h3 { page-break-after: avoid; }
-            pre, blockquote, table, ul, ol { page-break-inside: avoid; }
-          </style>
-          EOF
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
+            <style>
+              @page { size: A4; margin: 10mm; }
+              html, body { margin: 0; padding: 0; background: #fff; }
+              /* Usa ancho casi completo y centrado (ajusta a tu gusto) */
+              .markdown-body { box-sizing: border-box; max-width: 180mm; margin: 0 auto; padding: 0; }
+              /* Tipografía base razonable para CV */
+              body, .markdown-body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                font-size: 13.5px; line-height: 1.5;
+                -webkit-print-color-adjust: exact; print-color-adjust: exact;
+              }
+              /* Titulares más comedidos que GitHub */
+              .markdown-body h1 { font-size: 24px; margin: 0 0 10px; }
+              .markdown-body h2 { font-size: 19px; margin: 18px 0 8px; }
+              .markdown-body h3 { font-size: 16px; margin: 14px 0 6px; }
+              .markdown-body p, .markdown-body li { font-size: 13.5px; }
+              .markdown-body table { width: 100%; font-size: 12px; }
+              .markdown-body pre, .markdown-body code { font-size: 12px; }
+              .markdown-body img { max-width: 100%; }
+              .markdown-body a { color: inherit; text-decoration: none; }
+              /* Evitar saltos feos en impresión */
+              h1, h2, h3 { page-break-after: avoid; }
+              pre, blockquote, table, ul, ol { page-break-inside: avoid; }
+            </style>
+            EOF
 
-              echo '<article class="markdown-body">' > before.html
-              echo '</article>' > after.html
+          echo '<article class="markdown-body">' > before.html
+          echo '</article>' > after.html
 
-              pandoc docs/cv.md -o docs/cv.pdf \
-                --from gfm \
-                --standalone \
-                --metadata title="CV César Nóvoa" \
-                --include-in-header=header.html \
-                --include-before-body=before.html \
-                --include-after-body=after.html \
-                --pdf-engine=wkhtmltopdf \
-                --pdf-engine-opt=--page-size --pdf-engine-opt=A4 \
-                --pdf-engine-opt=--margin-top --pdf-engine-opt=10mm \
-                --pdf-engine-opt=--margin-right --pdf-engine-opt=10mm \
-                --pdf-engine-opt=--margin-bottom --pdf-engine-opt=10mm \
-                --pdf-engine-opt=--margin-left --pdf-engine-opt=10mm \
-                --pdf-engine-opt=--zoom --pdf-engine-opt=1.12
+      - name: Generate HTML (standalone)
+        shell: bash
+        run: |
+          pandoc docs/cv.md -o docs/cv.html \
+            --from gfm \
+            --standalone \
+            --metadata title="CV César Nóvoa" \
+            --include-in-header=header.html \
+            --include-before-body=before.html \
+            --include-after-body=after.html
 
-      - name: Commit PDF back
+      - name: Generate PDF from HTML
+        shell: bash
+        run: |
+          wkhtmltopdf \
+            --page-size A4 \
+            --margin-top 10mm \
+            --margin-right 10mm \
+            --margin-bottom 10mm \
+            --margin-left 10mm \
+            --zoom 1.12 \
+            docs/cv.html docs/cv.pdf
+
+      - name: Commit HTML & PDF back
+        shell: bash
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/cv.pdf
-          git commit -m "chore: update CV.pdf [skip ci]" || echo "No changes to commit"
+          git add docs/cv.html docs/cv.pdf
+          git commit -m "chore: update CV (HTML+PDF) [skip ci]" || echo "No changes to commit"
           git push
