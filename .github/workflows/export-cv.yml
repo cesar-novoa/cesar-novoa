@@ -29,11 +29,25 @@ jobs:
           cat > header.html <<'EOF'
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
           <style>
-            @page { size: A4; margin: 10mm; } /* ≈ 1cm */
+            @page { size: A4; margin: 10mm; }
             html, body { margin: 0; padding: 0; }
-            .markdown-body { box-sizing: border-box; max-width: 100%; margin: 0 auto; padding: 0; }
+            .markdown-body { box-sizing: border-box; max-width: none; margin: 0; padding: 0; }
+              body, .markdown-body { 
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+              font-size: 12px; line-height: 1.5;
+              -webkit-print-color-adjust: exact; print-color-adjust: exact;
+            }
+            .markdown-body h1 { font-size: 22px; margin: 0 0 10px; }
+            .markdown-body h2 { font-size: 18px; margin: 18px 0 8px; }
+            .markdown-body h3 { font-size: 15px; margin: 14px 0 6px; }
+            .markdown-body p, .markdown-body li { font-size: 12px; }
+            .markdown-body ul, .markdown-body ol { margin: 0 0 8px 18px; }
+            .markdown-body table { width: 100%; font-size: 11px; }
+            .markdown-body pre, .markdown-body code { font-size: 11px; }
+            .markdown-body img { max-width: 100%; }
+            .markdown-body a { color: inherit; text-decoration: none; }
             h1, h2, h3 { page-break-after: avoid; }
-            pre, blockquote, table { page-break-inside: avoid; }
+            pre, blockquote, table, ul, ol { page-break-inside: avoid; }
           </style>
           EOF
 
