@@ -1,54 +1,47 @@
-# **Hola, I'm César Nóvoa**  <img src='img/hi.gif' width='20'>
+# **Hi, I'm César Nóvoa** <img src='img/hi.gif' width='20'>
 
-_Sofware Developer Engineer at [CloudSphere](https://cloudsphere.com/) <img src='img/current-job.svg' width='10'>_
+_Frontend Engineer | React & Design Systems_
 
----
-
+<!--
 [![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/cesar-novoa/)
+[![Portfolio](https://img.shields.io/badge/-Portfolio-black?style=flat-square&logo=vercel&logoColor=white)](https://rasekdk.github.io)
 
+--- -->
 
----
+## Projects
 
+[ARTCLO](https://github.com/rasekdk/ARTCLO) -> WIP – experimenting with Astro to create an e-commerce concept
 
-## My Projects
+[Community](https://github.com/rasekdk/Community) -> Full Stack BootCamp Final Project
 
-[ARTCLO](https://github.com/rasekdk/ARTCLO) -> WIP - Learning how to use Astro by creating an e-commerce
+<!-- [My Web](https://rasekdk.github.io) -> Portfolio Web -->
 
-[Community](https://github.com/rasekdk/Community) -> Full Stack BootCamp Final Project 
+## Something about me
 
-[My Web](https://rasekdk.github.io) -> Portfolio Web
-
----
-
-## Something about me 
-
-``` js
+```js
 let rasek = {
-    code: ["Javascript", "Phyton", "PHP", "Typescript"],
-    askMeAbout: ["web dev", "web design", "graphic desing", "gaming"],
-    studies: ["Graphic Design", "Web Development"],
-    technologies: {
-        backEnd: {
-            js: ["Node", "Express"],
-        },
-        frontEnd: {
-            js: ["React", "React Native", "Vue"]
-        },
-        devOps: ["Docker"],
-        dataBases: ["MySql"],
-    },
-    futureLook: "Become a mix between my both parts, the graphic designer and the web developer. Some call it UX engineer.",
-
-}
+  code: ["JavaScript", "TypeScript", "PHP", "Python"],
+  askMeAbout: ["frontend dev", "UI/UX", "design systems", "graphic design"],
+  studies: ["Graphic Design", "Full Stack Development Bootcamp"],
+  technologies: {
+    frontEnd: ["React", "Redux", "Vite", "TailwindCSS", "Astro", "Next.js"],
+    backEnd: ["Node.js", "Express"],
+    databases: ["MySQL", "PostgreSQL"],
+    devOps: ["GitLab CI/CD", "GitHub Actions"],
+  },
+  currentFocus: "Building scalable, accessible frontends and design systems",
+};
 ```
-**Feel free to say hi** if you want to know more about me, or just talk 😊
+
+💬**Feel free to say hi** if you want to talk about web development, design, or just connect!
 
 ---
 
-### That's all Folks...  For now!!! 🐖
+### 📫 Contact
 
-- You can contact with me through [Linkedin](https://linkedin.com/in/rasekdk) or [Email](mailto:themotokar@gmail.com)
+- [LinkedIn](https://linkedin.com/in/cesar-novoa)
+- [Email](mailto:novoafernandezcesar@gmail.com)
 
 ---
 
-⌨️ with ❤️ by [César Nóvoa](https://rasekdk.github.io) 😊
+⌨️ with ❤️ by [César Nóvoa](https://github.com/rasekdk) 😊
