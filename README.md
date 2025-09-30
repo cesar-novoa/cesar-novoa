@@ -11,7 +11,7 @@ _Frontend Engineer | React & Design Systems_
 ## Resume
 
 - [View CV (Markdown)](./docs/cv.md)
-- [Download CV (PDF)](./docs/cv.pdf)
+- [Download CV (PDF)](https://github.com/cesar-novoa/cesar-novoa/raw/refs/heads/main/docs/cv.pdf)
 
 ## Projects
 
