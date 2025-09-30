@@ -17,21 +17,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install dependencies
+      - name: Install Pandoc + wkhtmltopdf
         run: |
-          npm install -g md-to-pdf github-markdown-css
+          sudo apt-get update
+          sudo apt-get install -y pandoc wkhtmltopdf
 
       - name: Generate PDF
         run: |
-          md-to-pdf docs/cv.md docs/cv.pdf \
-            --stylesheet node_modules/github-markdown-css/github-markdown.css
-        env:
-          PUPPETEER_NO_SANDBOX: "true"
+          pandoc docs/cv.md -o docs/cv.pdf \
+            --from markdown \
+            --css https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css \
+            --pdf-engine=wkhtmltopdf -V geometry:margin=2cm
 
       - name: Commit PDF back
         run: |
