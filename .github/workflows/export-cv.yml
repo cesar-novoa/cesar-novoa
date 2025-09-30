@@ -1,0 +1,37 @@
+name: Export CV
+
+on:
+  push:
+    paths:
+      - "docs/cv.md"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: |
+          npm install -g md-to-pdf github-markdown-css
+
+      - name: Generate PDF
+        run: |
+          md-to-pdf docs/cv.md \
+            --stylesheet node_modules/github-markdown-css/github-markdown.css \
+            --dest docs/cv.pdf
+
+      - name: Commit PDF back
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/cv.pdf
+          git commit -m "chore: update CV.pdf [skip ci]" || echo "No changes to commit"
+          git push
