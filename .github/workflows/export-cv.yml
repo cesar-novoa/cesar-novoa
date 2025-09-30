@@ -25,41 +25,36 @@ jobs:
       - name: Generate PDF
         shell: bash
         run: |
-          pandoc docs/cv.md -o docs/cv.pdf \
-            --from gfm \
-            --standalone \
-            --metadata title="CV César Nóvoa" \
-            --include-in-header=<(cat <<'EOF'
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
-              <style>
-                /* Forzar A4 y márgenes vía @page por si wkhtmltopdf ignora el CSS */
-                @page { size: A4; margin: 10mm; }  /* ≈ 1cm */
-                html, body { margin: 0; padding: 0; }
-                /* Envolver el contenido como espera github-markdown-css */
-                .markdown-body { box-sizing: border-box; max-width: 980px; margin: 0 auto; padding: 0; }
-                /* Evitar saltos feos */
-                h1, h2, h3 { page-break-after: avoid; }
-                pre, blockquote, table { page-break-inside: avoid; }
-              </style>
-              EOF
-              ) \
-            --include-before-body=<(echo '<article class="markdown-body">') \
-            --include-after-body=<(echo '</article>') \
-            --pdf-engine=wkhtmltopdf \
-            --pdf-engine-opt=--page-size \
-            --pdf-engine-opt=A4 \
-            --pdf-engine-opt=--margin-top \
-            --pdf-engine-opt=10mm \
-            --pdf-engine-opt=--margin-right \
-            --pdf-engine-opt=10mm \
-            --pdf-engine-opt=--margin-bottom \
-            --pdf-engine-opt=10mm \
-            --pdf-engine-opt=--margin-left \
-            --pdf-engine-opt=10mm \
-            --pdf-engine-opt=--header-spacing \
-            --pdf-engine-opt=0 \
-            --pdf-engine-opt=--footer-spacing \
-            --pdf-engine-opt=0
+          # 1) Crear los fragmentos HTML/CSS
+          cat > header.html <<'EOF'
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
+          <style>
+            @page { size: A4; margin: 10mm; } /* ≈ 1cm */
+            html, body { margin: 0; padding: 0; }
+            .markdown-body { box-sizing: border-box; max-width: 980px; margin: 0 auto; padding: 0; }
+            h1, h2, h3 { page-break-after: avoid; }
+            pre, blockquote, table { page-break-inside: avoid; }
+          </style>
+          EOF
+
+              echo '<article class="markdown-body">' > before.html
+              echo '</article>' > after.html
+
+              pandoc docs/cv.md -o docs/cv.pdf \
+                --from gfm \
+                --standalone \
+                --metadata title="CV César Nóvoa" \
+                --include-in-header=header.html \
+                --include-before-body=before.html \
+                --include-after-body=after.html \
+                --pdf-engine=wkhtmltopdf \
+                --pdf-engine-opt=--page-size --pdf-engine-opt=A4 \
+                --pdf-engine-opt=--margin-top --pdf-engine-opt=10mm \
+                --pdf-engine-opt=--margin-right --pdf-engine-opt=10mm \
+                --pdf-engine-opt=--margin-bottom --pdf-engine-opt=10mm \
+                --pdf-engine-opt=--margin-left --pdf-engine-opt=10mm \
+                --pdf-engine-opt=--header-spacing --pdf-engine-opt=0 \
+                --pdf-engine-opt=--footer-spacing --pdf-engine-opt=0
 
       - name: Commit PDF back
         run: |
