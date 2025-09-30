@@ -30,6 +30,8 @@ jobs:
         run: |
           md-to-pdf docs/cv.md docs/cv.pdf \
             --stylesheet node_modules/github-markdown-css/github-markdown.css
+        env:
+          PUPPETEER_NO_SANDBOX: "true"
 
       - name: Commit PDF back
         run: |
