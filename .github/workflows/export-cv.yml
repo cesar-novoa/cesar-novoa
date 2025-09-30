@@ -31,7 +31,7 @@ jobs:
           <style>
             @page { size: A4; margin: 10mm; } /* ≈ 1cm */
             html, body { margin: 0; padding: 0; }
-            .markdown-body { box-sizing: border-box; max-width: 980px; margin: 0 auto; padding: 0; }
+            .markdown-body { box-sizing: border-box; max-width: 100%; margin: 0 auto; padding: 0; }
             h1, h2, h3 { page-break-after: avoid; }
             pre, blockquote, table { page-break-inside: avoid; }
           </style>
