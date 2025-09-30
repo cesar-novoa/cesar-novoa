@@ -35,7 +35,7 @@ jobs:
             </style>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">') \
             --pdf-engine=wkhtmltopdf \
-            -V geometry:margin=2cm
+            -V geometry:margin=1cm
 
       - name: Commit PDF back
         run: |
