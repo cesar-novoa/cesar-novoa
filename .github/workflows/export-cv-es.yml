@@ -22,7 +22,7 @@ jobs:
         id: publish-doc
         uses: shrink/actions-document-publish@v1
         with:
-          sources: "docs/cv.md"
+          sources: "docs/cv-es.md"
 
       - name: Copiar PDF a docs/cv-es.pdf
         run: |
