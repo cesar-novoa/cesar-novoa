@@ -1,0 +1,37 @@
+name: Generate CV ES PDF
+
+on:
+  push:
+    paths:
+      - docs/cv-es.md
+      - .github/workflows/export-cv-es.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write # necesario para poder commitear al repo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
+      - name: Publish Markdown As PDF
+        id: publish-doc
+        uses: shrink/actions-document-publish@v1
+        with:
+          sources: "docs/cv.md"
+
+      - name: Copiar PDF a docs/cv-es.pdf
+        run: |
+          echo "PDF generado: ${{ steps.publish-doc.outputs.pdf }}"
+          mkdir -p docs
+          cp "${{ steps.publish-doc.outputs.pdf }}" "docs/cv-es.pdf"
+
+      - name: Commit & push PDF si hubo cambios
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(cv): actualizar docs/cv-es.pdf"
+          file_pattern: docs/cv-es.pdf
