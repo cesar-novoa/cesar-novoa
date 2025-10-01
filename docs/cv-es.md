@@ -1,6 +1,6 @@
 # César Nóvoa Fernández
 
-novoafernandezcesar@gmail.com | +353 083 027 9077 | Dublín, Irlanda  
+novoafernandezcesar@gmail.com | +34 698139758 | Dublín, Irlanda  
 
 [linkedin.com/in/cesar-novoa](https://linkedin.com/in/cesar-novoa) | [github.com/cesar-novoa](https://github.com/cesar-novoa)  
 
