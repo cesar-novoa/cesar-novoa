@@ -51,13 +51,13 @@ jobs:
 
           echo "PDF generated at docs/cv.pdf"
 
-      - name: Commit & push PDF si hubo cambios
+      - name: Commit & push PDF if threre are changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore(cv): update docs/cv.pdf"
           file_pattern: docs/cv.pdf
 
-      - name: Upload PDF artifact (opcional)
+      - name: Upload PDF artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
