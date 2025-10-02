@@ -1,14 +1,15 @@
-name: Generate CV ES PDF
+name: Generate CV PDF
 
 on:
   push:
     paths:
       - docs/cv-es.md
+      - docs/resume.yaml
       - .github/workflows/export-cv-es.yml
   workflow_dispatch:
 
 permissions:
-  contents: write # necesario para poder commitear al repo
+  contents: write
 
 jobs:
   build:
@@ -17,21 +18,48 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
-
-      - name: Publish Markdown As PDF
-        id: publish-doc
-        uses: shrink/actions-document-publish@v1
         with:
-          sources: "docs/cv-es.md"
+          fetch-depth: 0
 
-      - name: Copiar PDF a docs/cv-es.pdf
+      - name: Install Pandoc + XeLaTeX (with CJK support)
         run: |
-          echo "PDF generado: ${{ steps.publish-doc.outputs.pdf }}"
-          mkdir -p docs
-          cp "${{ steps.publish-doc.outputs.pdf }}" "docs/cv-es.pdf"
+          sudo apt-get update
+          sudo apt-get install -y \
+            pandoc \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-lang-cjk \
+            fonts-noto \
+            fonts-noto-cjk \
+            lmodern
+          echo "Pandoc version: $(pandoc -v | head -n1)"
+          xelatex --version | head -n1
 
-      - name: Commit & push PDF si hubo cambios
+      - name: Build PDF with Pandoc
+        run: |
+          mkdir -p docs
+          pandoc docs/cv-es.md \
+            --pdf-engine=xelatex \
+            --metadata-file=docs/config/resume.yaml \
+            -V mainfont="Noto Sans" \
+            -V sansfont="Noto Sans" \
+            -V monofont="Noto Sans Mono" \
+            -V CJKmainfont="Noto Sans CJK JP" \
+            -o docs/cv-es.pdf
+
+          echo "PDF generated at docs/cv-es.pdf"
+
+      - name: Commit & push PDF if threre are changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore(cv): actualizar docs/cv-es.pdf"
+          commit_message: "chore(cv): update docs/cv-es.pdf"
           file_pattern: docs/cv-es.pdf
+
+      - name: Upload PDF artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-es-pdf
+          path: docs/cv-es.pdf
