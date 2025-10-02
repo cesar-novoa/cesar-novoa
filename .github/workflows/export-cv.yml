@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - docs/cv.md
+      - docs/resume.yaml
       - .github/workflows/export-cv.yml
   workflow_dispatch:
 
@@ -16,22 +17,51 @@ jobs:
 
     steps:
       - name: Checkout the repo
+        # Usa fetch-depth 0 por si tu acción de autocommit necesita el historial
         uses: actions/checkout@v4
-
-      - name: Publish Markdown As PDF
-        id: publish-doc
-        uses: shrink/actions-document-publish@v1
         with:
-          sources: "docs/cv.md"
+          fetch-depth: 0
 
-      - name: Copiar PDF a docs/cv.pdf
+      - name: Install Pandoc + XeLaTeX (with CJK support)
         run: |
-          echo "PDF generado: ${{ steps.publish-doc.outputs.pdf }}"
+          sudo apt-get update
+          sudo apt-get install -y \
+            pandoc \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-lang-cjk \
+            fonts-noto \
+            fonts-noto-cjk \
+            lmodern
+          echo "Pandoc version: $(pandoc -v | head -n1)"
+          xelatex --version | head -n1
+
+      - name: Build PDF with Pandoc
+        run: |
           mkdir -p docs
-          cp "${{ steps.publish-doc.outputs.pdf }}" "docs/cv.pdf"
+          # Ajusta --metadata-file si tu config está en otra ruta/nombre
+          pandoc docs/cv.md \
+            --pdf-engine=xelatex \
+            --metadata-file=docs/resume.yaml \
+            -V mainfont="Noto Sans" \
+            -V sansfont="Noto Sans" \
+            -V monofont="Noto Sans Mono" \
+            -V CJKmainfont="Noto Sans CJK JP" \
+            -o docs/cv.pdf
+
+          echo "PDF generado en docs/cv.pdf"
 
       - name: Commit & push PDF si hubo cambios
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore(cv): actualizar docs/cv.pdf"
           file_pattern: docs/cv.pdf
+
+      - name: Upload PDF artifact (opcional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf
+          path: docs/cv.pdf

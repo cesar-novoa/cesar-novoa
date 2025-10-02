@@ -24,7 +24,7 @@ Experienced in guiding teams toward consistent standards and cross-functional co
 
 ### Frontend Software Engineer - CloudSphere
 
-Aug 2022 - Sep 2025
+_Aug 2022 - Sep 2025_
 
 - Drove a ~28% reduction in bundle size and improved TTI/page loads by 20–30% through code-splitting, tree-shaking, and dependency optimization.
 - Established reusable component patterns, introduced stricter code reviews, and integrated Vitest testing, reducing UI regressions by ~25%.
@@ -36,18 +36,19 @@ _Tech: React, JavaScript, Redux, Vite, GitLab CI/CD_
 
 ### Frontend-leaning Full-Stack Developer - ingenyus\*
 
-Apr 2021 - Jul 2022
+_Apr 2021 – Jul 2022_
 
-- Drove accessibility compliance, ensuring all public-sector and university sites met WCAG standards.
-- Increased organic traffic by 15–20% by implementing structured SEO improvements (schema.org, metadata, sitemaps, performance profiling).
-- Optimized delivery pipeline by developing custom plugins and starter themes, reducing repetitive build tasks and accelerating site launches.
-- Coordinated project intake and prioritization, leading a 2-person IT team and aligning with designers, marketers, and research staff to deliver projects on schedule.
+- Built and maintained full-stack web solutions for public institutions, universities, and SMEs — combining frontend delivery with backend logic (PHP/MySQL).
+- Developed e-commerce platforms and custom business logic (catalogs, payments, forms, role-based content), extending WordPress beyond static corporate sites.
+- Ensured accessibility compliance (WCAG) and improved performance/SEO, raising organic traffic by 15–20%.
+- Automated workflows through custom plugins and starter themes, reducing repetitive tasks and accelerating launches.
+- Coordinated intake and prioritization, working closely with designers, marketers, and research staff to align delivery with institutional needs.
 
 _Tech: WordPress, PHP, HTML, CSS, JavaScript, MySQL_
 
 ### Designer & Developer - ingenyus\*
 
-Aug 2019 - Aug 2020
+_Aug 2019 - Aug 2020_
 
 - Built reusable design templates aligned with development constraints, gaining early experience in bridging design and engineering to ensure consistent UI delivery.
 - Implemented SEO foundations (metadata, sitemaps, semantic markup, performance basics), establishing a baseline that supported later traffic growth.

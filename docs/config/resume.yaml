@@ -1,0 +1,41 @@
+# Pandoc style file for consistent CV & Cover Letter formatting
+# 👉 Usa este comando para compilar:
+# pandoc Folder/cv.md -o Folder/CV.pdf --pdf-engine=xelatex --metadata-file=Folder/resume.yaml
+
+documentclass: article
+fontsize: 10pt
+colorlinks: false
+links-as-notes: false
+
+# Fuentes (requiere XeLaTeX o LuaLaTeX)
+mainfont: "Arial"
+monofont: "Courier New"
+
+geometry:
+  - top=1.2cm
+  - bottom=2.0cm
+  - left=1.8cm
+  - right=1.8cm
+  - headheight=0pt
+  - headsep=0pt
+  - footskip=10pt
+  - includehead
+  - includefoot
+  - heightrounded
+
+header-includes:
+  - |
+    \pagestyle{empty}
+    \pagenumbering{gobble}
+
+    \usepackage{parskip}
+    \setlength{\parskip}{4pt}
+    \setlength{\parindent}{0pt}
+    \usepackage{enumitem}
+    \setlist[itemize]{topsep=2pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+
+    \usepackage{needspace}
+    \let\oldsection\section
+    \renewcommand{\section}[1]{\needspace{6\baselineskip}\oldsection{#1}}
+    \let\oldsubsection\subsection
+    \renewcommand{\subsection}[1]{\needspace{4\baselineskip}\oldsubsection{#1}}
