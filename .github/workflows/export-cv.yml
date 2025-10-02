@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write # necesario para poder commitear al repo
+  contents: write
 
 jobs:
   build:
@@ -17,7 +17,6 @@ jobs:
 
     steps:
       - name: Checkout the repo
-        # Usa fetch-depth 0 por si tu acción de autocommit necesita el historial
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -41,22 +40,21 @@ jobs:
       - name: Build PDF with Pandoc
         run: |
           mkdir -p docs
-          # Ajusta --metadata-file si tu config está en otra ruta/nombre
           pandoc docs/cv.md \
             --pdf-engine=xelatex \
-            --metadata-file=docs/resume.yaml \
+            --metadata-file=docs/config/resume.yaml \
             -V mainfont="Noto Sans" \
             -V sansfont="Noto Sans" \
             -V monofont="Noto Sans Mono" \
             -V CJKmainfont="Noto Sans CJK JP" \
             -o docs/cv.pdf
 
-          echo "PDF generado en docs/cv.pdf"
+          echo "PDF generated at docs/cv.pdf"
 
       - name: Commit & push PDF si hubo cambios
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore(cv): actualizar docs/cv.pdf"
+          commit_message: "chore(cv): update docs/cv.pdf"
           file_pattern: docs/cv.pdf
 
       - name: Upload PDF artifact (opcional)
